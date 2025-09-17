@@ -3,21 +3,22 @@ import mysql.connector
 
 app = Flask(__name__)
  
-# MySQL configuration
-db_config = {
-    'host': 'NOM-HOTE-SERVEUR',
-    'user': 'root',
-    'password': 'foo',
-    'database': 'NOM-DE-LA-BDD'
-}
-
-# Initialize MySQL connection
-conn = mysql.connector.connect(**db_config)
-cursor = conn.cursor() 
 
 
 @app.route('/')
 def index():
+    # MySQL configuration
+    db_config = {
+        'host': 'tp4-sql',
+        'user': 'root',
+        'password': 'foo',
+        'database': 'demosql'
+    }
+
+    # Initialize MySQL connection
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor() 
+
     # Sample query
     query = "SELECT * FROM myTable"
     cursor.execute(query)
