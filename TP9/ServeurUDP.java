@@ -1,17 +1,32 @@
 import java.io.*;
 import java.net.*;
 
-public class ClientUDP
+public class ServeurUDP
 {
 	public static void main( String args[] )
 	{
-		InetAddress addr = InetAddress.getLocalHost();
-		System.out.println("adresse=" + addr.getHostName());
-		s = "Hello World"
-		byte[] data = s.getBytes();
-		DatagramPacket packet = new DatagramPacket(data,data.length,addr,1234)
-		DatagramSocket sock = new DatagramSocket();
-		sock.send(packet);
-		sock.close();
+		try{
+			DatagramSocket sock = new DatagramSocket(1234);
+			while(true)
+			{
+				System.out.println("-Waiting data");
+				DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
+				sock.receive(packet);
+				String str = new String(packet.getData());
+				System.out.println("str=" + str);
+
+				InetAddress addr = packet.getAddress();
+				int portClient = packet.getPort();
+				byte[] reponse = str.getBytes();
+				DatagramPacket packetresponse = new DatagramPacket(reponse,reponse.length,addr,portClient);
+				sock.send(packet);
+			}
+		} catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 }
