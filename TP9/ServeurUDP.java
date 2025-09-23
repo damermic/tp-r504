@@ -21,12 +21,8 @@ public class ServeurUDP
 				DatagramPacket packetresponse = new DatagramPacket(reponse,reponse.length,addr,portClient);
 				sock.send(packet);
 			}
-		} catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
