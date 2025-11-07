@@ -1,0 +1,18 @@
+1.3 8.2.2
+1.7 cat /etc/group
+1.8 sudo usermod -aG libvirt $USER
+1.9 2.4.9
+
+2.1 generic/debian11
+2.2 le nom d'uttilisateur de la box le nombre de telechargement la date de sortie de la box
+2.3 /var/lib/libvirt/images/
+2.4 1.3G
+2.5 2.5G
+2.6 vagrant whoami
+2.7 /home/vagrant pwd
+2.9 running
+2.10 70K
+2.11 oui de moitier
+
+3.3 dans le home
+
