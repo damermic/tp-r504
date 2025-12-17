@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Critères de l'identifiant :</h2>
+    <ul>
+        <li>Au moins 6 caractères</li>
+        <li>Au moins 1 chiffre</li>
+        <li>Au moins 1 majuscule et 1 minuscule</li>
+        <li>Au moins 1 caractère spécial</li>
+    </ul>
+    {% if error_message %}
+            <p style="color:red;">{{error_message}}</p>
+    {% endif %}
+
+    {% if success %}
+            <p style="color:green;">Identifiant enregistré avec succès !</p>
+    {% endif %}
+
+    <form action="http://localhost:5000/newuser" method="POST">
+        <label for="text">Identifiant souhaité :</label>
+        <input type="text" id="text" name="text" required>
+        <input type="submit" value="Valider l'identifiant">
+    </form>
+</body>
+</html>

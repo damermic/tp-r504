@@ -1,3 +1,12 @@
 grep -xE "[^\.].$/.(png|jpg|gif)$" noms_fichiers.txt
 grep -xE "^(-?[0-9]+)(/.[0-9]+)*(,[0-9]+)?(e[0-9]+)?
 gerp -xE "(^1( |-))?\(?[0-9]{3}\)?(-| )?[0-9]{3}(-| )?[0-9]{4}" no_tel_USA.txt
+
+grep -E "^([1-9][0-9]?|1[0-9][0-9]|2([0-4][0-9]|5[0-5]))\.$" addresses_ipv4_1.txt
+
+ip="([1-9]|[1-9][0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5]))"
+grep -E "^($ip\.){3}$ip$" adresses_ipv4_2.txt
+
+grep tcp /etc/services | wc -l 
+grep -P "\x09([1-9]([0-9]?){2}|10[0-2][0-3])/udp" services.txt | wc -l
+
