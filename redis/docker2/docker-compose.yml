@@ -1,0 +1,12 @@
+services:
+  s_cons:
+    image: img_cons:latest
+    depends_on:
+      - s_redis
+  s_prod:
+    image: img_prod:latest
+    depends_on:
+      - s_redis
+  s_redis:
+    image: redis:latest
+   

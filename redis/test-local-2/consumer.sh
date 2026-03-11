@@ -1,11 +1,11 @@
+threshold=32000 #seuil
+delay=2 #temps d'attente
 redis-cli DBSIZE >/dev/null
 if ! [ $? = 0 ] #test redis
 then
     echo "Erreur, pas de connection avec le serveur redus!"
     exit 1
 fi
-threshold=32000 #seuil
-delay=2 #temps d'attente
 while :
 do
     nb=$(redis-cli --raw LLEN mafile) #nombre d'item dans la liste

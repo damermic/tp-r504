@@ -1,5 +1,7 @@
+PARAM=s_redis
 threshold=32000 #seuil
-delay=2 #temps d'attenteredis-cli DBSIZE >/dev/null
+delay=2 #temps d'attente
+redis-cli -h $PARAM DBSIZE >/dev/null
 if ! [ $? = 0 ] #test redis
 then
     echo "Erreur, pas de connection avec le serveur redus!"
@@ -7,17 +9,17 @@ then
 fi
 while :
 do
-    nb=$(redis-cli --raw LLEN mafile) #nombre d'item dans la liste
+    nb=$(redis-cli -h $PARAM --raw LLEN mafile) #nombre d'item dans la liste
     if [ $nb -gt 0 ] #si plus grand que 0 alors on recupere la valeur de droite (la plus ancienne)
     then
-        a=$(redis-cli RPOP mafile)
+        a=$(redis-cli -h $PARAM RPOP mafile)
         echo $a
         if [ $a -gt $threshold ] #si la valeur est plus grand que le seuil 
         then
-            echo "ALARME! $a" # declenche une alarme et un temps d'attente
+            echo "ALARME! $a" # on declenche une alarme et un temps d'attente
             sleep $delay
         fi
-    else # sinon reste en attente
+    else # sinon on reste en attente
 		echo "Liste vide, attente 2s."
         sleep $delay
     fi
