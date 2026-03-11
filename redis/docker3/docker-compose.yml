@@ -1,0 +1,9 @@
+services:
+  s_cons:
+    image: img_cons:latest
+    environment:
+      - PARAM=redis://default:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}
+  s_prod:
+    image: img_prod:latest
+    environment:
+      - PARAM=redis://default:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}
