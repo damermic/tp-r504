@@ -1,25 +1,24 @@
 redis-cli DBSIZE >/dev/null
-if ! [ $? = 0 ]
+if ! [ $? = 0 ] #test redis
 then
     echo "Erreur, pas de connection avec le serveur redus!"
     exit 1
 fi
-threshold=32000
-delay=2
+threshold=32000 #seuil
+delay=2 #temps d'attente
 while :
 do
-    nb=$(redis-cli --raw LLEN mafile)
-    if [ $nb -gt 0 ]
+    nb=$(redis-cli --raw LLEN mafile) #nombre d'item dans la liste
+    if [ $nb -gt 0 ] #si plus grand que 0 alors on recupere la valeur de droite (la plus ancienne)
     then
         a=$(redis-cli RPOP mafile)
         echo $a
-        if [ $a -gt $threshold ]
+        if [ $a -gt $threshold ] #si la valeur est plus grand que le seuil 
         then
-            echo "ALARME! $a"
+            #echo "ALARME! $a"
             sleep $delay
         fi
-    else
-		echo "Liste vide, attente 2s."
-        sleep $delay
+    else #sinon arret du programme
+		exit 0
     fi
 done
