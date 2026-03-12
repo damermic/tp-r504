@@ -1,9 +1,9 @@
 services:
-  s_cons:
+  s_cons: #consumer
     image: img_cons:latest
-    environment:
+    environment: #ajout de variable d'environnement pour securiser le mots de passe
       - PARAM=redis://default:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}
-  s_prod:
+  s_prod: #producer
     image: img_prod:latest
-    environment:
+    environment: #ajout de variable d'environnement pour securiser le mots de passe
       - PARAM=redis://default:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}

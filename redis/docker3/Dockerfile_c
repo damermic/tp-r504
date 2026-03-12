@@ -1,5 +1,5 @@
-FROM alpine:latest
-COPY consumer.sh /srv
+FROM alpine:latest #image reduite
+COPY consumer.sh /srv #ajout du script
 WORKDIR /srv
-RUN apk add --no-cache bash redis
-CMD [ "bash","-c","./consumer.sh" ]
+RUN apk add --no-cache bash redis #installation de redis
+CMD [ "bash","-c","./consumer.sh" ] #éxecution du script

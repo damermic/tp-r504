@@ -1,5 +1,5 @@
-FROM alpine:latest
-COPY producer.sh /srv
+FROM alpine:latest #image reduite
+COPY producer.sh /srv #ajout du script
 WORKDIR /srv
-RUN apk add --no-cache bash redis
-CMD [ "bash","-c","./producer.sh" ]
+RUN apk add --no-cache bash redis #installation de redis
+CMD [ "bash","-c","./producer.sh" ] #éxecution du script
