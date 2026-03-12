@@ -1,0 +1,5 @@
+FROM alpine:latest
+COPY scale.sh /srv
+WORKDIR /srv
+RUN apk add --no-cache bash redis docker-cli-compose
+CMD [ "bash","-c","./scale.sh" ]
